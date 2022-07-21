@@ -10,7 +10,7 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <link href="/style.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
     <title>Blog Page</title>
   </head>
   <body>
@@ -20,7 +20,7 @@
           <a class="navbar-title" href="/">/random_things</a>
         </li>
         <li class="nav-item">
-          <a class="navbar-title" href="/admin-index">+</a>
+          <a class="navbar-title" href="/new">+</a>
         </li>
       </ul>
     </nav>
@@ -35,20 +35,22 @@
               alt="Responsive image"
             />
             <div class="index-card-body">
-              <h5 class="index-card-title">
-                <a href="<%= article.title %>"> </a>
-              </h5>
-              <h3 class="index-card-text">
-                <a href="<%= article.subtitle %>"> </a>
-              </h3>
+              <h4 class="index-card-title">
+                <a class="index-card-title" href="<%= article.title %>"
+                  ><%= article.title %></a
+                >
+              </h4>
               <p class="index-card-text"><%= article.content %></p>
               <p class="index-byline">
                 Posted <%= article.createdAt.toLocaleDateString() %>
               </p>
             </div>
-            <a href="/<%= article.slug %>" class="btn btn-outline-primary"
+            <a
+              href="/<%= article.slug %>"
+              class="btn btn-outline-primary"
               >Read More</a
             >
+            </form>
           </div>
         </div>
         <% }) %>

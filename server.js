@@ -58,6 +58,10 @@ app.get("/login", (req, res) => {
   res.render("login");
 });
 
+app.get("/admin-home", (req, res) => {
+  res.render("admin-home");
+});
+
 app.get(
   "/admin-index",
   connectEnsureLogin.ensureLoggedIn(),
@@ -67,11 +71,11 @@ app.get(
   }
 );
 
-app.get("/new", (req, res) => {
+app.get("/new", connectEnsureLogin.ensureLoggedIn(), (req, res) => {
   res.render("new");
 });
 
-app.get("/edit/:id", async (req, res) => {
+app.get("/edit/:id", connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
   const article = await Article.findById(req.params.id);
   res.render("edit", { article: article });
 });
@@ -82,17 +86,28 @@ app.get("/:slug", async (req, res) => {
   res.render("show", { article: article });
 });
 
+app.get(
+  "/admin-show/:slug",
+  connectEnsureLogin.ensureLoggedIn(),
+  async (req, res) => {
+    const article = await Article.findOne({ slug: req.params.slug });
+    if (article == null) res.redirect("/");
+    res.render("admin-show", { article: article });
+  }
+);
+
 app.post(
   "/",
   async (req, res, next) => {
     req.article = new Article();
     next();
   },
-  saveArticleAndRedirect("/admin-index")
+  saveArticleAndRedirect("/index")
 );
 
 app.put(
   "/:id",
+  connectEnsureLogin.ensureLoggedIn(),
   async (req, res, next) => {
     req.article = await Article.findById(req.params.id);
     next();
@@ -105,12 +120,12 @@ app.delete("/:id", async (req, res) => {
   res.redirect("/");
 });
 
-app.get("/logout", function (req, res, next) {
+app.post("logout", function (req, res) {
   req.logout(function (err) {
     if (err) {
       return next(err);
     }
-    res.redirect("index");
+    res.redirect("/");
   });
 });
 

@@ -37,8 +37,35 @@ h3 {
   max-width: 600px;
 }
 
+.login-form {
+  background-color: #bdc3c7;
+  padding: 2rem;
+  width: auto;
+  margin: 2rem;
+}
+
+.admin-home {
+  background-color: #bdc3c7;
+  padding: 2rem;
+  width: auto;
+  margin: 2rem;
+}
+
+#login-button {
+  margin-top: 1rem;
+}
+
+#admin-edit-btn {
+  margin-right: 0.5rem;
+}
+
+.login-title {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
 .form-group {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .edit-page-title {
@@ -52,6 +79,7 @@ h3 {
   }
   a.index-card-title {
     font-size: 1.5rem;
+    text-decoration: none;
   }
   p.blogpost-card-body-text {
     font-size: 0.9rem;
@@ -98,8 +126,10 @@ h3 {
   }
 }
 
-h5.index-card-title {
+h5.index-card-title,
+.index-card-title {
   margin-top: 10px;
+  text-decoration: none;
 }
 
 .navbar-nav,

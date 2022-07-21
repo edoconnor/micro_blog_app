@@ -17,7 +17,7 @@
     <nav class="navbar navbar-light" style="background-color: #ecf0f1">
       <ul class="navbar-nav mx-auto order-0">
         <li class="nav-item">
-          <a class="navbar-title" href="/logout">/</a>
+          <a class="navbar-title" href="/logout" method="?_method=DELETE">/</a>
         </li>
         <li class="nav-item">
           <a class="navbar-title" href="/index">random_things</a>
@@ -38,23 +38,23 @@
               alt="Responsive image"
             />
             <div class="index-card-body">
-              <h5 class="index-card-title">
-                <a href="<%= article.title %>"> </a>
-              </h5>
-              <h3 class="index-card-text">
-                <a href="<%= article.subtitle %>"> </a>
-              </h3>
+              <h4 class="index-card-title">
+                <a class="index-card-title" href="<%= article.title %>"
+                  ><%= article.title %></a
+                >
+              </h4>
+
               <p class="index-card-text"><%= article.content %></p>
               <p class="index-byline">
                 Posted <%= article.createdAt.toLocaleDateString() %>
               </p>
             </div>
-            <a href="/<%= article.slug %>" class="btn btn-outline-primary"
+            <a
+              href="admin-show/<%= article.slug %>"
+              class="btn btn-outline-primary"
               >Read More</a
             >
-            <a href="/edit/<%= article.id %>" class="btn btn-outline-primary"
-              >Edit</a
-            >
+
             <form
               action="/<%= article.id %>?_method=DELETE"
               method="POST"
