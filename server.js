@@ -12,7 +12,7 @@ const app = express();
 
 app.use(
   session({
-    secret: "e0ee1c265d41fa0c16ed3a5d3f08f8cec962d17fd8c2858ea1560a5d0be874c9",
+    secret: "secret",
     resave: false,
     saveUninitialized: true,
     cookie: { maxAge: 60 * 60 * 1000 }, // 1 hour
